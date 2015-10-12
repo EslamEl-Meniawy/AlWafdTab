@@ -333,15 +333,16 @@ function loadAD() {
             };
             AdMob.setOptions(defaultOptions);
             AdMob.showBannerAtXY(0, 175 + (($(window).height() - 175) * 0.01));*/
+            alert('Width: ' + parseInt($(window).width() * 0.15) + '\nHeight: ' + parseInt($(window).height() - 175 - (($(window).height() - 175) * 0.02)) + '\nPosition: ' + parseInt(175 + (($(window).height() - 175) * 0.01)));
             AdMob.createBanner({
                 adId: admobid.banner,
                 adSize: 'CUSTOM',
-                width: $(window).width() * 0.15,
-                height: $(window).height() - 175 - (($(window).height() - 175) * 0.02),
+                width: parseInt($(window).width() * 0.15),
+                height: parseInt($(window).height() - 175 - (($(window).height() - 175) * 0.02)),
                 overlap: true,
                 position: AdMob.AD_POSITION.POS_XY,
                 x: 0,
-                y: 175 + (($(window).height() - 175) * 0.01),
+                y: parseInt(175 + (($(window).height() - 175) * 0.01)),
                 autoShow: true
             });
         }
