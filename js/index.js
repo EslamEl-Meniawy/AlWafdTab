@@ -345,7 +345,7 @@ function loadAD() {
                 y: parseInt(175 + (($(window).height() - 175) * 0.01)),
                 autoShow: true
             });
-            AdMob.showBanner();
+            AdMob.showBannerAtXY(0, parseInt(175 + (($(window).height() - 175) * 0.01)));
         }
     }
 }
