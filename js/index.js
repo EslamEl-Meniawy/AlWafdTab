@@ -315,7 +315,8 @@ function loadAD() {
         admob.initAdmob('ca-app-pub-1333731159795332/4834563999', 'ca-app-pub-1333731159795332/6311297196');
         var admobParam = new  admob.Params();
         admobParam.isTesting = false;
-        admob.showBannerAbsolute(admob.BannerSize.IAB_WIDE_SKYSCRAPER, 0, (175 + (($(window).height() - 175) * 0.01)), admobParam);
+        //admob.showBannerAbsolute(admob.BannerSize.IAB_WIDE_SKYSCRAPER, 0, (175 + (($(window).height() - 175) * 0.01)), admobParam);
+        admob.showBannerAbsolute(admob.BannerSize.IAB_WIDE_SKYSCRAPER, 0, 175, admobParam);
         window.onbeforeunload = function() {
             admob.hideBanner();
         };
