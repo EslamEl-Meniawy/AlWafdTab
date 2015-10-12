@@ -15,11 +15,7 @@ var connected;
 var activeCount, position = 0;
 var interv, interval, intervalpop;
 var timeout;
-//var ad = '<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><!-- Alwafd Mobile Ads --><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1333731159795332" data-ad-slot="8849621195" data-ad-format="auto"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script>';
-var bannerAdUnit = 'ca-app-pub-1333731159795332/4834563999';
-var interstitialAdUnit = 'ca-app-pub-1333731159795332/6311297196';
-var isOverlap = true;
-var isTest = false;
+var ad = '<iframe src="http://alwafd.org/admob.html"></iframe>';
 // Change 14 to 15
 for (var i = 0; i < 14; i++) {
     titles[i] = [];
@@ -101,7 +97,7 @@ function onDeviceReady() {
         if (connected == 1) {
             categories = document.getElementsByTagName('no tag');
             loadXML(positions[0]);
-            //$('#sec' + positions[0] + '-ad').html(ad);
+            $('#sec' + positions[0] + '-ad').html(ad);
         }
         position = 1;
     }
@@ -117,10 +113,10 @@ function onDeviceReady() {
                 if (connected == 1) {
                     categories = document.getElementsByTagName('no tag');
                     loadXML(positions[position - 1]);
-                    /*$('.ad-holder').each(function() {
+                    $('.ad-holder').each(function() {
                         $( this ).html('');
                     });
-                    $('#sec' + positions[position - 1] + '-ad').html(ad);*/
+                    $('#sec' + positions[position - 1] + '-ad').html(ad);
                 }
             }
         },
@@ -135,10 +131,10 @@ function onDeviceReady() {
                 if (connected == 1) {
                     categories = document.getElementsByTagName('no tag');
                     loadXML(positions[position - 1]);
-                    /*$('.ad-holder').each(function() {
+                    $('.ad-holder').each(function() {
                         $( this ).html('');
                     });
-                    $('#sec' + positions[position - 1] + '-ad').html(ad);*/
+                    $('#sec' + positions[position - 1] + '-ad').html(ad);
                 }
             }
         },
@@ -151,7 +147,6 @@ function onDeviceReady() {
         $('#urgentpop').width('0px');
         $('#urgentpop').height('0px');
     });
-    loadAD();
 }
 function refreshData() {
     checkConnection();
@@ -307,52 +302,5 @@ function getUrgentPop() {
             }
         };
         xmlhttp.send();
-    }
-}
-function loadAD() {
-    checkConnection();
-    if (connected == 1) {
-        /*admob.initAdmob('ca-app-pub-1333731159795332/4834563999', 'ca-app-pub-1333731159795332/6311297196');
-        var admobParam = new  admob.Params();
-        admobParam.isTesting = false;
-        //admob.showBannerAbsolute(admob.BannerSize.IAB_WIDE_SKYSCRAPER, 0, (175 + (($(window).height() - 175) * 0.01)), admobParam);
-        admob.showBannerAbsolute(admob.BannerSize.IAB_WIDE_SKYSCRAPER, 0, 175, admobParam);
-        window.onbeforeunload = function() {
-            admob.hideBanner();
-        };*/
-        var admobid = {
-            banner: 'ca-app-pub-1333731159795332/4834563999',
-            interstitial: 'ca-app-pub-1333731159795332/6311297196'
-        };
-        if(AdMob) {
-            /*var defaultOptions = {
-                adSize: 'CUSTOM',
-                width: $(window).width() * 0.15,
-                height: $(window).height() - 175 - (($(window).height() - 175) * 0.02),
-                isTesting: false
-            };
-            AdMob.setOptions(defaultOptions);
-            AdMob.showBannerAtXY(0, 175 + (($(window).height() - 175) * 0.01));*/
-            alert('Width: ' + parseInt($(window).width() * 0.15) + '\nHeight: ' + parseInt($(window).height() - 175 - (($(window).height() - 175) * 0.02)) + '\nPosition: ' + parseInt(175 + (($(window).height() - 175) * 0.01)));
-            AdMob.createBanner({
-                adId: admobid.banner,
-                adSize: 'CUSTOM',
-                width: parseInt($(window).width() * 0.15),
-                height: parseInt($(window).height() - 175 - (($(window).height() - 175) * 0.02)),
-                overlap: true,
-                position: AdMob.AD_POSITION.POS_XY,
-                x: 0,
-                y: parseInt(175 + (($(window).height() - 175) * 0.01)),
-                autoShow: true
-            });
-            AdMob.showBannerAtXY(0, parseInt(175 + (($(window).height() - 175) * 0.01)));
-            document.addEventListener('onAdFailLoad', function(data){
-                alert('error: ' + data.error + 
-                    ', reason: ' + data.reason + 
-                    ', adNetwork:' + data.adNetwork + 
-                    ', adType:' + data.adType + 
-                    ', adEvent:' + data.adEvent); // adType: 'banner', 'interstitial', etc.
-            });
-        }
     }
 }
