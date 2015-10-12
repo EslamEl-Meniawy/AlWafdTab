@@ -346,6 +346,13 @@ function loadAD() {
                 autoShow: true
             });
             AdMob.showBannerAtXY(0, parseInt(175 + (($(window).height() - 175) * 0.01)));
+            document.addEventListener('onAdFailLoad', function(data){
+                alert('error: ' + data.error + 
+                    ', reason: ' + data.reason + 
+                    ', adNetwork:' + data.adNetwork + 
+                    ', adType:' + data.adType + 
+                    ', adEvent:' + data.adEvent); // adType: 'banner', 'interstitial', etc.
+            });
         }
     }
 }
